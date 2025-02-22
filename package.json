@@ -1,0 +1,29 @@
+{
+  "name": "edtech-exscore-hackathon",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chinmay Raj",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^3.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "fs": "^0.0.1-security",
+    "jimp": "^0.2.27",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.10.0",
+    "openai": "^4.85.1",
+    "pdf-parse": "^1.1.1",
+    "tesseract.js": "^6.0.0"
+  }
+}
