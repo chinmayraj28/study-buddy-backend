@@ -41,7 +41,7 @@ router.post("/forgot-password", async (req, res) => {
             subject: "Password Reset Request",
             text: `You requested a password reset. Click the link below to reset your password:
             
-            ${process.env.CLIENT_URL}/forgot-password?token=${resetToken}
+            ${process.env.CLIENT_URL}/#/forgot-password?token=${resetToken}
             
             This link will expire in 15 minutes.`
         };
