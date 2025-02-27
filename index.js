@@ -12,7 +12,14 @@ const app = express();
 // MongoDB Connection
 mongoose.connect(process.env.DB_URI).then(() => console.log('Connected to MongoDB')).catch(err => console.error('MongoDB Connection Error:', err));
 
-app.use(cors());
+app.use(
+    cors({
+      origin: "https://chinmayraj28.github.io", 
+      methods: "GET,POST,PUT,DELETE",
+      credentials: true, 
+    })
+  );
+  
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
