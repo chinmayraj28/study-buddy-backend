@@ -6,7 +6,23 @@ const router = express.Router();
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 const isValidUsername = (username) => /^[a-zA-Z0-9_]{3,20}$/.test(username);
-const isValidPassword = (password) => /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
+
+// Fixed password validation function with more comprehensive checks
+const isValidPassword = (password) => {
+  // Check minimum length
+  if (password.length < 8) return false;
+  
+  // Check for at least one letter
+  if (!/[a-zA-Z]/.test(password)) return false;
+  
+  // Check for at least one digit
+  if (!/\d/.test(password)) return false;
+  
+  // Check for at least one special character - expanded character set
+  if (!/[@$!%*?&#^()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) return false;
+  
+  return true;
+};
 
 router.post("/", async (req, res) => {
     try {

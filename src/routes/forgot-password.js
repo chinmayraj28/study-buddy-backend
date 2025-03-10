@@ -6,8 +6,21 @@ const nodemailer = require("nodemailer");
 
 const router = express.Router();
 
+// Fixed password validation function with more comprehensive checks
 const isValidPassword = (password) => {
-    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(password);
+  // Check minimum length
+  if (password.length < 8) return false;
+  
+  // Check for at least one letter
+  if (!/[a-zA-Z]/.test(password)) return false;
+  
+  // Check for at least one digit
+  if (!/\d/.test(password)) return false;
+  
+  // Check for at least one special character - expanded character set
+  if (!/[@$!%*?&#^()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) return false;
+  
+  return true;
 };
 
 router.post("/forgot-password", async (req, res) => {
@@ -65,7 +78,7 @@ router.post("/reset-password/:token", async (req, res) => {
 
         if (!isValidPassword(password)) {
             return res.status(400).json({
-                error: "Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character."
+                error: "Password must be at least 8 characters long, with at least one letter, one number, and one special character."
             });
         }
 
