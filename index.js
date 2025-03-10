@@ -13,12 +13,12 @@ const app = express();
 mongoose.connect(process.env.DB_URI).then(() => console.log('Connected to MongoDB')).catch(err => console.error('MongoDB Connection Error:', err));
 
 app.use(
-    cors({
-      origin: "https://chinmayraj28.github.io", 
-      methods: "GET,POST,PUT,DELETE",
-      credentials: true, 
-    })
-  );
+  cors({
+    origin: ["https://chinmayraj28.github.io", "https://study-buddy.fun", "http://study-buddy.fun"], 
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true, 
+  })
+);
   
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
